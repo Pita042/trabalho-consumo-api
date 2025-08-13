@@ -11,10 +11,14 @@ async function getCharacters() {
   const lista = document.createElement('ul')
   let characters = ''
   data.results.forEach(element => {
-    characters += `<li>
-      ${element.name}
-      <img src="${element.image}" alt="${element.name}"/>
-    </li>`
+    characters += `
+      <li>
+        <a href="character.html#${element.id}">
+          <img src="${element.image}" alt="${element.name}" width="100"/>
+          <p>${element.name}</p>
+        </a>
+      </li>
+    `;
   });
   lista.innerHTML = characters
   content.appendChild(lista)
@@ -31,9 +35,6 @@ async function getCharacters() {
   if (page >= maxpage) {
     paginate = ` <button id="prev" onClick="prev()">Anterior</button>`
   }
-
-
-
   document.getElementById('paginate').innerHTML = paginate
 }
 getCharacters()
