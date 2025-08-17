@@ -8,14 +8,17 @@ async function getCharacter() {
         const data = await response.json();
 
         content.innerHTML = `
-            <h2>${data.name}</h2>
-            <img src="${data.image}" alt="${data.name}" width="200"/>
-            <p><strong>Espécie:</strong> ${data.species}</p>
-            <p><strong>Origem:</strong> ${data.origin.name}</p>
-            <p><strong>Status:</strong> ${data.status}</p>
-            <p><strong>Gênero:</strong> ${data.gender}</p>
-            <p><strong>Localização:</strong> ${data.location.name}</p>
+        <div class="character-card">
+        <img src="${data.image}" alt="${data.name}" />
+        <h2>${data.name}</h2>
+        <p><strong>Espécie:</strong> ${data.species}</p>
+        <p><strong>Origem:</strong> ${data.origin.name}</p>
+        <p><strong>Status:</strong> ${data.status}</p>
+        <p><strong>Gênero:</strong> ${data.gender}</p>
+        <p><strong>Localização:</strong> ${data.location.name}</p>
+        </div>
         `;
+
 
         let prevButton = `<button id="prev" onclick="navigate(-1)" ${id <= 1 ? 'disabled' : ''}>Anterior</button>`;
         let nextButton = `<button id="next" onclick="navigate(1)" ${id >= 826 ? 'disabled' : ''}>Próximo</button>`;
